@@ -18,7 +18,7 @@ const COLOR_CODES = {
   }
 };
 
-const TIME_LIMIT = 20;
+const TIME_LIMIT = 59;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -66,6 +66,9 @@ function startTimer() {
 
     if (timeLeft === 0) {
       onTimesUp();
+      document
+      .getElementById("app").innerHTML = (makeid(5));
+     
     }
   }, 1000);
 }
@@ -74,7 +77,7 @@ function formatTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
 
-  if (seconds < 10) {
+  if (seconds < 30) {
     seconds = `0${seconds}`;
   }
 
@@ -112,4 +115,17 @@ function setCircleDasharray() {
   document
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
+}
+
+
+
+   function makeid(length) {
+    var result           = [];
+    var characters       = 'TOPEXPERTBDINUSERTIMER0356789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result.push(characters.charAt(Math.floor(Math.random() * 
+ charactersLength)));
+   }
+   return result.join('');
 }
